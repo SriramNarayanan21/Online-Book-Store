@@ -1,0 +1,27 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+	
+	<div id='books' class="col-lg-9 ">
+	<h3 class="my-border-botto pb-1"><span class="text-muted">Search result for</span>{{request.GET.q}}</h3>
+	<div class="row mx-auto">	
+		{% for book in data %}
+		<div class="card mx-auto mb-3" style="width:18rem">
+			<img class="thumbnail" src="{{ book.imageURL}}">
+			<div class="box-element book">
+				<h6><strong>{{book}}</strong></h6>
+				<hr>
+
+				<button data-book={{book.id}} data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
+				<a class="btn btn-outline-success" href="#">View</a>
+				<h4 style="display: inline-block; float:right"><strong>Rs {{book.price|floatformat:2}}</strong></h4>
+
+			</div>
+		</div>
+
+		{% endfor %}
+	
+	</div>
+	</div>	
+
+{% endblock content %}
